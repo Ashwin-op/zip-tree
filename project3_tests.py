@@ -39,7 +39,12 @@ def zip_tree_tests():
 	print(f'get_size(): {tree.get_size()}, Expected: 5')
 	print(f'get_height(): {tree.get_height()}, Expected: 2')
 	print(f'get_depth(2): {tree.get_depth(2)}, Expected: 0')
-	print(f'get_depth(1): {tree.get_depth(1)}, Expected: 2\n')
+	print(f'get_depth(1): {tree.get_depth(1)}, Expected: 2')
+	tree.remove(0)
+	print(f'get_size(): {tree.get_size()}, Expected: 4')
+	print(f'get_height(): {tree.get_height()}, Expected: 2')
+	print(f'get_depth(2): {tree.get_depth(2)}, Expected: 0')
+	print(f'get_depth(1): {tree.get_depth(1)}, Expected: 1')
 
 	data2 = [InsertType(4, 'a', 2), InsertType(5, 'b', 3), InsertType(2, 'c', 1), InsertType(1, 'd', 0), InsertType(0, 'e', 1)]
 	tree2 = create_tree_with_data(data2)
@@ -73,7 +78,7 @@ def skip_list_tests():
 	skip_list.insert(2.2, 'c')
 	skip_list.insert(2.1, 'd')
 	skip_list.insert(2.6, 'e')
-	# skip list levels should look like 
+	# skip list levels should look like
 	#																		-> 2.1 -> 		 2.4 -> 	   2.6
 	#														 				-> 2.1 -> 		 2.4 -> 	   2.6
 	#															 			-> 2.1 -> 2.2 -> 2.4 -> 2.5 -> 2.6
@@ -83,7 +88,7 @@ def skip_list_tests():
 	print(f'get_list_size_at_level(1): {skip_list.get_list_size_at_level(1)}, Expected: 3')
 	print(f'get_list_size_at_level(2): {skip_list.get_list_size_at_level(2)}, Expected: 3\n')
 	skip_list.remove(2.6)
-	# skip list levels should look like 
+	# skip list levels should look like
 	#																		-> 2.1 -> 		 2.4
 	#														 				-> 2.1 -> 		 2.4
 	#															 			-> 2.1 -> 2.2 -> 2.4 -> 2.5
@@ -100,7 +105,7 @@ def skip_list_tests():
 	skip_list = requirements.SkipList()
 	skip_list.from_zip_tree(tree)
 
-	# skip list levels should look like 
+	# skip list levels should look like
 	#																		->		2
 	#														 				-> 1 -> 2
 	#															 			-> 1 -> 2 -> 4 -> 5
@@ -109,14 +114,14 @@ def skip_list_tests():
 	print(f'get_list_size_at_level(1): {skip_list.get_list_size_at_level(1)}, Expected: 2')
 	print(f'get_list_size_at_level(2): {skip_list.get_list_size_at_level(2)}, Expected: 1\n')
 	skip_list.remove(2)
-	# skip list levels should look like 
+	# skip list levels should look like
 	#														 				-> 1
 	#															 			-> 1 -> 4 -> 5
 	print(f'get_list_size_at_level(0): {skip_list.get_list_size_at_level(0)}, Expected: 3')
 	print(f'get_list_size_at_level(2): {skip_list.get_list_size_at_level(2)}, Expected: 0')
 
 	# add new tests...
-	
+
 if __name__ == '__main__':
 	zip_tree_tests()
 	skip_list_tests()
