@@ -42,6 +42,8 @@ class ZipTree:
 
         new_node = Node(key, val, rank if rank != -1 else self.get_random_rank())
 
+        # current: for storing the node to be replaced
+        # previous: for storing the parent of current
         current = self.root
         previous = None
 
@@ -102,6 +104,8 @@ class ZipTree:
     # ii)  Replace node with a child, depending on rank
     # iii) Zipping of subtrees of deleted node
     def remove(self, key: KeyType):
+        self.size -= 1
+
         # current: at first node to be deleted; then replacing node
         # previous: parent of "current"
         # left: left child of "current", first part for zipping
